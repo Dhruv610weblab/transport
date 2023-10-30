@@ -6,7 +6,6 @@ import 'package:transport/screens/bottom_nav_screens/ongoing/view/ongoing.dart';
 import 'package:transport/screens/bottom_nav_screens/profile/view/profile.dart';
 
 import '../constants/colors.dart';
-import 'bottom_nav_screens/profile/controller/profile_controller.dart';
 
 class Home extends StatefulWidget {
   final int? currIndex;
@@ -200,10 +199,12 @@ class _HomeState extends State<Home> {
           //   leaveController.leavesTypeHome();
           //   leaveController.leavesHome();
           // }
-          if (index == 3) {
-            ProfileController profileController = Get.put(ProfileController());
-            profileController.getProfile();
-          }
+          // if (index == 3) {
+          //   ServiceRequestController serviceRequestController =
+          //       Get.put(ServiceRequestController());
+          //   serviceRequestController.serviceTypeHome();
+          //   serviceRequestController.services();
+          // }
           // if (index == 4) {
           //   ProfileController profileController = Get.put(ProfileController());
           //   profileController.profileHome();
