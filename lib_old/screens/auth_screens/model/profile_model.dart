@@ -57,8 +57,6 @@ class Data {
 
 class Driver {
   final int? id;
-  final String? profile;
-
   final String? firstName;
   final String? lastName;
   final String? gender;
@@ -97,7 +95,6 @@ class Driver {
 
   Driver({
     this.id,
-    this.profile,
     this.firstName,
     this.lastName,
     this.gender,
@@ -137,7 +134,6 @@ class Driver {
 
   Driver copyWith({
     int? id,
-    String? profile,
     String? firstName,
     String? lastName,
     String? gender,
@@ -176,7 +172,6 @@ class Driver {
   }) {
     return Driver(
       id: id ?? this.id,
-      profile: profile ?? this.profile,
       firstName: firstName ?? this.firstName,
       lastName: lastName ?? this.lastName,
       gender: gender ?? this.gender,
@@ -218,7 +213,6 @@ class Driver {
 
   Driver.fromJson(Map<String, dynamic> json)
       : id = json['id'] as int?,
-        profile = json['profile'] as String?,
         firstName = json['first_name'] as String?,
         lastName = json['last_name'] as String?,
         gender = json['gender'] as String?,
@@ -257,7 +251,6 @@ class Driver {
 
   Map<String, dynamic> toJson() => {
         'id': id,
-        'profile': profile,
         'first_name': firstName,
         'last_name': lastName,
         'gender': gender,

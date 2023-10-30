@@ -6,11 +6,9 @@ import '../../../../constants/colors.dart';
 
 class ProfileImage extends StatelessWidget {
   final bool isEditable;
-  final String? url;
   const ProfileImage({
     super.key,
     this.isEditable = false,
-    this.url,
   });
   @override
   Widget build(BuildContext context) {

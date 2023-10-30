@@ -14,7 +14,12 @@ Future<dynamic> defaultLogoutDialog(Object e) {
           false, // Set this to false to make the dialog not dismissible from outside touch
       middleText:
           "You have logged in with a different device. Please login again",
-      onConfirm: () async => await logoutController.logoutUser(),
+      onConfirm: () {
+        logoutController.logoutUser().then((value) =>
+            AppStorage().getToken() != null
+                ? null
+                : Get.offAll(() => LoginScreen()));
+      },
       backgroundColor: AppColors.white,
       buttonColor: AppColors.primary2,
       radius: 30);

@@ -11,8 +11,4 @@ class ApiUrl {
   static String sendOtpUrl = "${baseUrl}password/reset";
   static String verifyOtpUrl = "${baseUrl}password/verify";
   static String newPasswordUrl = "${baseUrl}password/new";
-
-  ///Profile
-  static String profileUrl = "${baseUrl}profile";
-  static String profileUpdateUrl = "${baseUrl}profile-update";
 }
