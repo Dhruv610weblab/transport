@@ -24,13 +24,12 @@ class ProfileModel {
   ProfileModel.fromJson(Map<String, dynamic> json)
       : status = json['status'] as bool?,
         message = json['message'] as String?,
-        data = (json['data'] as Map<String,dynamic>?) != null ? Data.fromJson(json['data'] as Map<String,dynamic>) : null;
+        data = (json['data'] as Map<String, dynamic>?) != null
+            ? Data.fromJson(json['data'] as Map<String, dynamic>)
+            : null;
 
-  Map<String, dynamic> toJson() => {
-    'status' : status,
-    'message' : message,
-    'data' : data?.toJson()
-  };
+  Map<String, dynamic> toJson() =>
+      {'status': status, 'message': message, 'data': data?.toJson()};
 }
 
 class Data {
@@ -49,16 +48,16 @@ class Data {
   }
 
   Data.fromJson(Map<String, dynamic> json)
-      : driver = (json['driver'] as Map<String,dynamic>?) != null ? Driver.fromJson(json['driver'] as Map<String,dynamic>) : null;
+      : driver = (json['driver'] as Map<String, dynamic>?) != null
+            ? Driver.fromJson(json['driver'] as Map<String, dynamic>)
+            : null;
 
-  Map<String, dynamic> toJson() => {
-    'driver' : driver?.toJson()
-  };
+  Map<String, dynamic> toJson() => {'driver': driver?.toJson()};
 }
 
 class Driver {
   final int? id;
-  final dynamic profile;
+  final String? profile;
   final String? firstName;
   final String? lastName;
   final String? gender;
@@ -129,7 +128,7 @@ class Driver {
 
   Driver copyWith({
     int? id,
-    dynamic profile,
+    String? profile,
     String? firstName,
     String? lastName,
     String? gender,
@@ -192,7 +191,8 @@ class Driver {
       jobLeaveDate: jobLeaveDate ?? this.jobLeaveDate,
       emergencyContactName: emergencyContactName ?? this.emergencyContactName,
       emergencyContactNo: emergencyContactNo ?? this.emergencyContactNo,
-      emergencyContactAddress: emergencyContactAddress ?? this.emergencyContactAddress,
+      emergencyContactAddress:
+          emergencyContactAddress ?? this.emergencyContactAddress,
       otherDoc: otherDoc ?? this.otherDoc,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
@@ -201,7 +201,7 @@ class Driver {
 
   Driver.fromJson(Map<String, dynamic> json)
       : id = json['id'] as int?,
-        profile = json['profile'],
+        profile = json['profile'] as String?,
         firstName = json['first_name'] as String?,
         lastName = json['last_name'] as String?,
         gender = json['gender'] as String?,
@@ -235,38 +235,38 @@ class Driver {
         updatedAt = json['updated_at'] as String?;
 
   Map<String, dynamic> toJson() => {
-    'id' : id,
-    'profile' : profile,
-    'first_name' : firstName,
-    'last_name' : lastName,
-    'gender' : gender,
-    'dob' : dob,
-    'sin_no' : sinNo,
-    'phone' : phone,
-    'email' : email,
-    'address' : address,
-    'country' : country,
-    'state' : state,
-    'city' : city,
-    'zip' : zip,
-    'license_no' : licenseNo,
-    'license_no_file' : licenseNoFile,
-    'license_class' : licenseClass,
-    'license_issue_country' : licenseIssueCountry,
-    'license_issue_state' : licenseIssueState,
-    'license_issue_date' : licenseIssueDate,
-    'license_expire_date' : licenseExpireDate,
-    'status_in_canada' : statusInCanada,
-    'canada_doc_file' : canadaDocFile,
-    'expire_doc_date' : expireDocDate,
-    'job_join_date' : jobJoinDate,
-    'offer_letter_file' : offerLetterFile,
-    'job_leave_date' : jobLeaveDate,
-    'emergency_contact_name' : emergencyContactName,
-    'emergency_contact_no' : emergencyContactNo,
-    'emergency_contact_address' : emergencyContactAddress,
-    'other_doc' : otherDoc,
-    'created_at' : createdAt,
-    'updated_at' : updatedAt
-  };
+        'id': id,
+        'profile': profile,
+        'first_name': firstName,
+        'last_name': lastName,
+        'gender': gender,
+        'dob': dob,
+        'sin_no': sinNo,
+        'phone': phone,
+        'email': email,
+        'address': address,
+        'country': country,
+        'state': state,
+        'city': city,
+        'zip': zip,
+        'license_no': licenseNo,
+        'license_no_file': licenseNoFile,
+        'license_class': licenseClass,
+        'license_issue_country': licenseIssueCountry,
+        'license_issue_state': licenseIssueState,
+        'license_issue_date': licenseIssueDate,
+        'license_expire_date': licenseExpireDate,
+        'status_in_canada': statusInCanada,
+        'canada_doc_file': canadaDocFile,
+        'expire_doc_date': expireDocDate,
+        'job_join_date': jobJoinDate,
+        'offer_letter_file': offerLetterFile,
+        'job_leave_date': jobLeaveDate,
+        'emergency_contact_name': emergencyContactName,
+        'emergency_contact_no': emergencyContactNo,
+        'emergency_contact_address': emergencyContactAddress,
+        'other_doc': otherDoc,
+        'created_at': createdAt,
+        'updated_at': updatedAt
+      };
 }

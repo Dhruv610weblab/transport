@@ -1,7 +1,15 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:http/http.dart' as http;
+import 'package:transport/screens/bottom_nav_screens/profile/controller/profile_controller.dart';
+import 'package:transport/screens/bottom_nav_screens/profile/model/update_profile_model.dart';
+import '../../../../api/api_url.dart';
+import '../../../../constants/colors.dart';
+import '../../../../constants/store_local.dart';
+import '../../../../widgets/logout_dialog.dart';
 
 class ImagePickerController extends GetxController {
   File? _image;
@@ -27,41 +35,41 @@ class ImagePickerController extends GetxController {
         final pickedImage = await ImagePicker().pickImage(source: source);
         if (pickedImage == null) return;
         _image = File(pickedImage.path);
-        //
-        // var request =
-        //     http.MultipartRequest('post', Uri.parse(ApiUrl.profileImageUrl));
-        // request.headers["Authorization"] = 'Bearer ${AppStorage().getToken()}';
-        // request.headers["Content-Type"] = 'multipart/form-data';
-        // request.headers["Accept"] = 'application/json';
-        // if (image != null) {
-        //   request.files.add(http.MultipartFile(
-        //     'profile_image',
-        //     image!.readAsBytes().asStream(),
-        //     image!.lengthSync(),
-        //     filename: image!.path.split('/').last,
-        //   ));
-        // }
-        // final response = await request.send();
-        // print('Image upload ${response.statusCode}');
-        // // print('Image uploa ${response.message}');
-        // final responseData = await response.stream.bytesToString();
-        // final jsonResponse = jsonDecode(responseData);
-        // //
-        // RequestLeaveResponse apiResponse =
-        //     RequestLeaveResponse.fromJson(jsonResponse);
-        // if (response.statusCode == 200) {
-        // Request succeeded, handle the response data
-        // print("SUCCESS ${apiResponse.message}");
-        // update();
-        // ProfileController profileController = Get.put(ProfileController());
-        // profileController.profileHome();
-        // Get.back();
 
-        // Get.snackbar('Success', "${apiResponse.message}",
-        //     colorText: AppColors.white);
-        // } else if (response.statusCode == 401) {
-        //   defaultLogoutDialog('Unauthorised');
-        // }
+        var request =
+            http.MultipartRequest('post', Uri.parse(ApiUrl.profileUpdateUrl));
+        request.headers["Authorization"] = 'Bearer ${AppStorage().getToken()}';
+        request.headers["Content-Type"] = 'multipart/form-data';
+        request.headers["Accept"] = 'application/json';
+        if (image != null) {
+          request.files.add(http.MultipartFile(
+            'profile',
+            image!.readAsBytes().asStream(),
+            image!.lengthSync(),
+            filename: image!.path.split('/').last,
+          ));
+        }
+        final response = await request.send();
+        // print('Image upload ${response.statusCode}');
+        // print('Image uploa ${response.message}');
+        final responseData = await response.stream.bytesToString();
+        final jsonResponse = jsonDecode(responseData);
+        //
+        UpdateProfileModel apiResponse =
+            UpdateProfileModel.fromJson(jsonResponse);
+        if (response.statusCode == 200) {
+          //Request succeeded, handle the response data
+          print("SUCCESS ${apiResponse.message}");
+          update();
+          ProfileController profileController = Get.put(ProfileController());
+          profileController.getProfile();
+          Get.back();
+
+          Get.snackbar('Success', "${apiResponse.message}",
+              colorText: AppColors.white);
+        } else if (response.statusCode == 401) {
+          defaultLogoutDialog('Unauthorised');
+        }
         // Notify GetX that the state has changed
 
         // // Crop the picked image

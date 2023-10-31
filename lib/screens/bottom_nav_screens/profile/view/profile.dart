@@ -123,13 +123,13 @@ class ProfileScreen extends StatelessWidget {
                             ],
                           ),
                           SizedBox(height: Get.height * 0.08),
-                          AppButton(
-                              isExpanded: true,
-                              text: 'Edit',
-                              textColor: AppColors.white,
-                              btnColor: AppColors.primary1,
-                              onClick: () {}),
-                          SizedBox(height: Get.height * 0.02),
+                          // AppButton(
+                          //     isExpanded: true,
+                          //     text: 'Edit',
+                          //     textColor: AppColors.white,
+                          //     btnColor: AppColors.primary1,
+                          //     onClick: () {}),
+                          // SizedBox(height: Get.height * 0.02),
                           AppButton(
                               isExpanded: true,
                               text: 'Logout',

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:transport/screens/bottom_nav_screens/profile/controller/image_controller.dart';
 import 'package:transport/screens/bottom_nav_screens/profile/widget/photo_pick_bottom_sheet.dart';
 
@@ -14,7 +15,7 @@ class ProfileImage extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    ImagePickerController imagePickerController = ImagePickerController();
+    ImagePickerController controller = ImagePickerController();
 
     return Stack(
       children: [
@@ -23,10 +24,23 @@ class ProfileImage extends StatelessWidget {
           child: Container(
             height: 100,
             width: 100,
-            decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/images/getstart.png'),
-                    fit: BoxFit.cover)),
+            child: controller.image == null
+                ? Image.network(
+                    url ?? "",
+                    height: Get.height / 2.2,
+                    width: Get.width / 2.2,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      // Custom error widget when the image fails to load
+                      return Icon(Icons.error);
+                    },
+                  )
+                : Image.file(
+                    controller.image!,
+                    height: Get.height / 2.2,
+                    width: Get.width / 2.2,
+                    fit: BoxFit.cover,
+                  ),
           ),
         ),
         !isEditable
