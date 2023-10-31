@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:transport/api/api_url.dart';
 import 'package:transport/screens/auth_screens/model/login_model.dart';
+import '../../../api/api_service.dart';
 import '../../../constants/colors.dart';
 import '../../../constants/store_local.dart';
 import '../../get_start.dart';
@@ -41,7 +42,7 @@ class LoginController extends GetxController {
         var body =
             jsonEncode({"username": email.value, "password": password.value});
         var response =
-            await LoginService().postService(url: ApiUrl.loginUrl, body: body);
+            await ApiService().postAuthService(url: ApiUrl.loginUrl, body: body);
         LoginModel apiResponse = LoginModel.fromJson(response);
         if (apiResponse.error != null) {
           responseError(apiResponse.error!);

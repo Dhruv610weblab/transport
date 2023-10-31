@@ -6,6 +6,7 @@ import 'package:transport/screens/bottom_nav_screens/ongoing/view/ongoing.dart';
 import 'package:transport/screens/bottom_nav_screens/profile/view/profile.dart';
 
 import '../constants/colors.dart';
+import 'bottom_nav_screens/history/controllers/hitory_controller.dart';
 import 'bottom_nav_screens/profile/controller/profile_controller.dart';
 
 class Home extends StatefulWidget {
@@ -195,11 +196,10 @@ class _HomeState extends State<Home> {
           //       Get.put(AttendanceController());
           //   attendanceController.attendanceHome();
           // }
-          // if (index == 2) {
-          //   LeaveController leaveController = Get.put(LeaveController());
-          //   leaveController.leavesTypeHome();
-          //   leaveController.leavesHome();
-          // }
+          if (index == 2) {
+            HistoryController historyController = Get.put(HistoryController());
+            historyController.history();
+          }
           if (index == 3) {
             ProfileController profileController = Get.put(ProfileController());
             profileController.getProfile();

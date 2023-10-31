@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-
 import '../../../../constants/colors.dart';
 import '../controller/image_controller.dart';
 
@@ -16,7 +15,7 @@ Future<dynamic> imagePickerBottomSheet({bool? isRequestLeave = false}) {
     Container(
       height: Get.height * 0.28,
       child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8.0),
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.stretch,

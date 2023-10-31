@@ -4,7 +4,7 @@
 // import '../../../../constants/store_local.dart';
 // import '../../../auth_screens/controller/login_controller.dart';
 //
-// class ProfileService extends GetConnect {
+// class HistoryService extends GetConnect {
 //   LoginController loginController = Get.put(LoginController());
 //   final HandleException handleException = HandleException();
 //

@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:transport/screens/bottom_nav_screens/profile/service/profile_service.dart';
 
+import '../../../../api/api_service.dart';
 import '../../../../api/api_url.dart';
 import '../../../../constants/colors.dart';
 import '../model/profile_model.dart';
@@ -11,7 +12,7 @@ class ProfileController extends GetxController {
   Future<void> getProfile() async {
     try {
       isProfile.value = true;
-      var response = await ProfileService().getService(url: ApiUrl.profileUrl);
+      var response = await ApiService().getService(url: ApiUrl.profileUrl);
       ProfileModel apiResponse = ProfileModel.fromJson(response);
       if (apiResponse.status == true) {
         if (apiResponse.data != null) {

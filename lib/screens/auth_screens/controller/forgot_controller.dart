@@ -5,6 +5,7 @@ import 'package:transport/api/api_url.dart';
 import 'package:transport/screens/auth_screens/controller/login_controller.dart';
 import 'package:transport/screens/auth_screens/controller/state_change.dart';
 import 'package:transport/screens/auth_screens/model/login_model.dart';
+import '../../../api/api_service.dart';
 import '../../../constants/colors.dart';
 import '../../../constants/store_local.dart';
 import '../auth_service/service_login.dart';
@@ -35,8 +36,8 @@ class ForgotController extends GetxController {
       isForgot.value = true;
       updateErrorEmail("");
       var body = jsonEncode({"username": loginController.email.value});
-      var response =
-          await LoginService().postService(url: ApiUrl.sendOtpUrl, body: body);
+      var response = await ApiService()
+          .postAuthService(url: ApiUrl.sendOtpUrl, body: body);
       LoginModel apiResponse = LoginModel.fromJson(response);
       if (apiResponse.error != null) {
         responseError(apiResponse.error!);
@@ -59,8 +60,8 @@ class ForgotController extends GetxController {
       var body = jsonEncode(
           {"username": loginController.email.value, "one_time_pin": otp.value});
       print(body);
-      var response = await LoginService()
-          .postService(url: ApiUrl.verifyOtpUrl, body: body);
+      var response = await ApiService()
+          .postAuthService(url: ApiUrl.verifyOtpUrl, body: body);
       LoginModel apiResponse = LoginModel.fromJson(response);
       if (apiResponse.status == true) {
         stateChangeController.changeIndex(3);

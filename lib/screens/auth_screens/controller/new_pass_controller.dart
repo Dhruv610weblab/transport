@@ -5,6 +5,7 @@ import 'package:transport/constants/store_local.dart';
 import 'package:transport/screens/auth_screens/controller/login_controller.dart';
 import 'package:transport/screens/auth_screens/controller/state_change.dart';
 
+import '../../../api/api_service.dart';
 import '../../../api/api_url.dart';
 import '../../../constants/colors.dart';
 import '../auth_service/service_login.dart';
@@ -41,8 +42,8 @@ class NewPasswordController extends GetxController {
         "username": loginController.email.value,
         "password": password.value
       });
-      var response = await LoginService()
-          .postService(url: ApiUrl.newPasswordUrl, body: body);
+      var response = await ApiService()
+          .postAuthService(url: ApiUrl.newPasswordUrl, body: body);
       LoginModel apiResponse = LoginModel.fromJson(response);
       if (apiResponse.status == true) {
         stateChangeController.changeIndex(0);

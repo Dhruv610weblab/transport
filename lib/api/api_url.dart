@@ -3,16 +3,21 @@ class ApiUrl {
   static const apiUrl = "api/v1/";
   static String baseUrl = mainUrl + apiUrl;
 
-  ///Authentication
+  /// Authentication91234567890
   static String loginUrl = "${baseUrl}login";
   static String logoutUrl = "${baseUrl}logout";
 
-  ///Forgot Password
+  /// Forgot Password
   static String sendOtpUrl = "${baseUrl}password/reset";
   static String verifyOtpUrl = "${baseUrl}password/verify";
   static String newPasswordUrl = "${baseUrl}password/new";
 
-  ///Profile
+  /// Profile
   static String profileUrl = "${baseUrl}profile";
   static String profileUpdateUrl = "${baseUrl}profile-update";
+
+  /// Other
+  static String routesUrl = "${baseUrl}routes";
+  static String updateStatusUrl = "${baseUrl}update-status";
+  static String historyUrl = "${baseUrl}history";
 }
