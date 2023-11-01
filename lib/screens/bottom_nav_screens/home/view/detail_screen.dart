@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../../constants/colors.dart';
 import '../../../../constants/text_style.dart';
-import '../../../../widgets/button.dart';
 import '../../../../widgets/page_background.dart';
 
 class DetailScreen extends StatelessWidget {

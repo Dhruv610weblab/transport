@@ -38,6 +38,7 @@ dependencies:
   get: ^4.6.5
   persistent_bottom_nav_bar: ^5.0.2
   pinput: ^3.0.1
+  intl: ^0.17.0
   timeline_tile: ^2.0.0
   permission_handler: ^10.0.0
   #  image_cropper: ^3.0.0

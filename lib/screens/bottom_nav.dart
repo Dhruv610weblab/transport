@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:transport/screens/bottom_nav_screens/history/view/history.dart';
+import 'package:transport/screens/bottom_nav_screens/home/controller/home_controller.dart';
 import 'package:transport/screens/bottom_nav_screens/home/view/home_screen.dart';
 import 'package:transport/screens/bottom_nav_screens/ongoing/view/ongoing.dart';
 import 'package:transport/screens/bottom_nav_screens/profile/view/profile.dart';
@@ -30,6 +31,8 @@ class _HomeState extends State<Home> {
 
   @override
   void initState() {
+    RouteController routeController = Get.put(RouteController());
+    routeController.routes();
     if (mounted) {
       navBarsItems = [
         BottomNavigationBarItem(
@@ -184,13 +187,10 @@ class _HomeState extends State<Home> {
         selectedItemColor: AppColors.primary2,
         unselectedItemColor: AppColors.grey,
         onTap: (index) {
-          // if (index == 0) {
-          //   FeedController feedController = Get.put(FeedController());
-          //   feedController.indexOfTab(0);
-          //   feedController.announcementHome();
-          //   feedController.anniversaryHome();
-          //   feedController.birthdayHome();
-          // }
+          if (index == 0) {
+            RouteController routeController = Get.put(RouteController());
+            routeController.routes();
+          }
           // if (index == 1) {
           //   AttendanceController attendanceController =
           //       Get.put(AttendanceController());
