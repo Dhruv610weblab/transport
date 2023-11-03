@@ -16,7 +16,6 @@ class LogoutController extends GetxController {
       var response = await ApiService().getService(url: ApiUrl.logoutUrl);
       LoginModel apiResponse = LoginModel.fromJson(response);
       if (apiResponse.status == true) {
-        AppStorage().removeToken();
         Get.snackbar("Logout", apiResponse.message.toString(),
             colorText: AppColors.white);
       }
@@ -24,6 +23,7 @@ class LogoutController extends GetxController {
       Get.snackbar("Exception", e.toString().split(":").last,
           colorText: AppColors.white);
     } finally {
+      AppStorage().removeToken();
       Get.offAll(() => const LoginScreen());
       isLogout.value = false;
     }

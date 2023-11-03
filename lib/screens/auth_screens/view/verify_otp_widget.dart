@@ -135,10 +135,8 @@ class VerifyOtpWidget extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   forgotController.isForgot.value == true
-                                      ? Text(
-                                          "Resending OTP...",
-                                          style: AppTextStyle().subtitle1,
-                                        )
+                                      ? Text("Resending OTP...",
+                                          style: AppTextStyle().subtitle1)
                                       : RichText(
                                           text: TextSpan(
                                               text:

@@ -22,6 +22,9 @@ class HistoryScreen extends StatelessWidget {
           child: GetBuilder(
               init: HistoryController(),
               builder: (historyController) {
+                if (historyController.isHistory.value) {
+                  return Center(child: CircularProgressIndicator());
+                }
                 return RefreshIndicator(
                   onRefresh: () => historyController.history(),
                   child: ListView.builder(

@@ -20,6 +20,10 @@ class HomeScreen extends StatelessWidget {
           child: GetBuilder(
               init: RouteController(),
               builder: (routeController) {
+                if (routeController.isHome.value) {
+                  return Center(child: CircularProgressIndicator());
+                }
+
                 return RefreshIndicator(
                   onRefresh: () => routeController.routes(),
                   child: ListView.builder(
@@ -56,7 +60,7 @@ class HomeScreen extends StatelessWidget {
                                       ),
                                       IconButton(
                                           onPressed: () =>
-                                              Get.to(() => DetailScreen()),
+                                              Get.to(() => DetailScreen(detial: routeController.routesList[index])),
                                           icon: Icon(
                                             Icons.info_outline,
                                             color: AppColors.primary1,
@@ -111,13 +115,19 @@ class HomeScreen extends StatelessWidget {
                                     children: [
                                       Expanded(
                                           child: AppButton(
-                                              height: 35,
-                                              padding: 0,
-                                              textSize: 15,
-                                              text: "Accept",
-                                              textColor: AppColors.white,
-                                              btnColor: AppColors.green,
-                                              onClick: () {})),
+                                        height: 35,
+                                        padding: 0,
+                                        textSize: 15,
+                                        text: "Accept",
+                                        textColor: AppColors.white,
+                                        btnColor: AppColors.green,
+                                        onClick: () async =>
+                                            await routeController.status(
+                                                id: routeController
+                                                        .routesList[index].id ??
+                                                    0,
+                                                status: 0),
+                                      )),
                                       SizedBox(
                                         width: Get.width * 0.12,
                                       ),
@@ -129,7 +139,13 @@ class HomeScreen extends StatelessWidget {
                                               text: "Reject",
                                               textColor: AppColors.white,
                                               btnColor: AppColors.red,
-                                              onClick: () {})),
+                                              onClick: () async =>
+                                                  await routeController.status(
+                                                      id: routeController
+                                                              .routesList[index]
+                                                              .id ??
+                                                          0,
+                                                      status: 1))),
                                     ],
                                   ),
                                 ],

@@ -1,13 +1,16 @@
-import 'package:get/get.dart';
-import 'package:transport/screens/bottom_nav_screens/home/model/routes_model.dart';
+import 'dart:convert';
 
+import 'package:get/get.dart';
+import 'package:transport/constants/store_local.dart';
+import 'package:transport/screens/bottom_nav_screens/home/model/routes_model.dart';
+import 'package:transport/screens/bottom_nav_screens/home/model/update_status_model.dart';
 import '../../../../api/api_service.dart';
 import '../../../../api/api_url.dart';
 import '../../../../constants/colors.dart';
 
 class RouteController extends GetxController {
   RxBool isHome = false.obs;
-  Rx<Data?> routesData = Rx<Data?>(null);
+  // Rx<Data?> routesData = Rx<Data?>(null);
   RxList<Routes> routesList = <Routes>[].obs;
 
   Future<void> routes() async {
@@ -31,16 +34,21 @@ class RouteController extends GetxController {
   }
 
   RxBool isStatus = false.obs;
-  Future<void> status() async {
+  Future<void> status({required int status, required int id}) async {
     try {
       isStatus.value = true;
-      routesList.removeRange(0, routesList.length);
-      var response = await ApiService().getService(url: ApiUrl.updateStatusUrl);
-      RoutesModel apiResponse = RoutesModel.fromJson(response);
+      var body = jsonEncode({"id": id, "status": status});
+      // print(AppStorage().getToken());
+      var response = await ApiService()
+          .postService(body: body, url: ApiUrl.updateStatusUrl);
+      UpdateStatusModel apiResponse = UpdateStatusModel.fromJson(response);
       if (apiResponse.status == true) {
-        if (apiResponse.data != null) {
-          routesList.assignAll(apiResponse.data?.routes ?? []);
-        }
+        routes();
+        Get.snackbar("Success", apiResponse.message.toString(),
+            colorText: AppColors.white);
+      } else {
+        Get.snackbar("Failed", apiResponse.message.toString(),
+            colorText: AppColors.white);
       }
     } catch (e) {
       Get.snackbar("Exception", e.toString().split(":").last,

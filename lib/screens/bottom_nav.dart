@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:transport/screens/bottom_nav_screens/history/view/history.dart';
 import 'package:transport/screens/bottom_nav_screens/home/controller/home_controller.dart';
 import 'package:transport/screens/bottom_nav_screens/home/view/home_screen.dart';
+import 'package:transport/screens/bottom_nav_screens/ongoing/controllers/view_controller.dart';
 import 'package:transport/screens/bottom_nav_screens/ongoing/view/ongoing.dart';
 import 'package:transport/screens/bottom_nav_screens/profile/view/profile.dart';
 
@@ -191,11 +192,10 @@ class _HomeState extends State<Home> {
             RouteController routeController = Get.put(RouteController());
             routeController.routes();
           }
-          // if (index == 1) {
-          //   AttendanceController attendanceController =
-          //       Get.put(AttendanceController());
-          //   attendanceController.attendanceHome();
-          // }
+          if (index == 1) {
+            ViewController viewController = Get.put(ViewController());
+            viewController.viewRoutes();
+          }
           if (index == 2) {
             HistoryController historyController = Get.put(HistoryController());
             historyController.history();

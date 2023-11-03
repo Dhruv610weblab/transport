@@ -20,4 +20,8 @@ class ApiUrl {
   static String routesUrl = "${baseUrl}routes";
   static String updateStatusUrl = "${baseUrl}update-status";
   static String historyUrl = "${baseUrl}history";
+
+  ///Verify shipping
+  static String checkUrl = "${baseUrl}route-status/check";
+  static String verifyUrl = "${baseUrl}route-status/verify";
 }

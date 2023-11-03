@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:transport/screens/bottom_nav_screens/home/model/routes_model.dart';
 import '../../../../constants/colors.dart';
+import '../../../../constants/format_date.dart';
 import '../../../../constants/text_style.dart';
 import '../../../../widgets/page_background.dart';
 
 class DetailScreen extends StatelessWidget {
-  const DetailScreen({super.key});
+  final Routes detial;
+  const DetailScreen({super.key, required this.detial});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +31,7 @@ class DetailScreen extends StatelessWidget {
                       "Trip ID",
                       style: AppTextStyle().subtitle3,
                     ),
-                    Text("ID 2351 6534"),
+                    Text("# ${detial.id}"),
                     SizedBox(
                       height: Get.height * 0.02,
                     ),
@@ -43,7 +46,9 @@ class DetailScreen extends StatelessWidget {
                                 "From",
                                 style: AppTextStyle().subtitle3,
                               ),
-                              Text("Track number"),
+                              Text(
+                                "${detial.pickupAdd1}, ${detial.pickupCity}, ${detial.pickupState}, ${detial.pickupCountry}, (${detial.pickupZip}",
+                              ),
                             ],
                           ),
                         ),
@@ -55,7 +60,40 @@ class DetailScreen extends StatelessWidget {
                                 "To",
                                 style: AppTextStyle().subtitle3,
                               ),
-                              Text("Track number"),
+                              Text(
+                                  "${detial.shipAdd1}, ${detial.shipCity}, ${detial.shipState}, ${detial.shipCountry}, (${detial.shipZip}"),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: Get.height * 0.02,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Vendor Number",
+                                style: AppTextStyle().subtitle3,
+                              ),
+                              Text("${detial.pickupPhone}"),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Receiver Number",
+                                style: AppTextStyle().subtitle3,
+                              ),
+                              Text("${detial.shipPhone}"),
                             ],
                           ),
                         ),
@@ -75,7 +113,7 @@ class DetailScreen extends StatelessWidget {
                                 "Status",
                                 style: AppTextStyle().subtitle3,
                               ),
-                              Text("Track number"),
+                              Text("${detial.status}"),
                             ],
                           ),
                         ),
@@ -87,7 +125,7 @@ class DetailScreen extends StatelessWidget {
                                 "Weight",
                                 style: AppTextStyle().subtitle3,
                               ),
-                              Text("Track number"),
+                              Text("${detial.loadQuantity} ${detial.loadUnit}"),
                             ],
                           ),
                         ),
@@ -99,72 +137,68 @@ class DetailScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Mobile Number",
-                              style: AppTextStyle().subtitle3,
-                            ),
-                            Text("+91 9878985485"),
-                          ],
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Pickup Date",
+                                style: AppTextStyle().subtitle3,
+                              ),
+                              Text("${formatDate(detial.pickupDate)}"),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Delivery Date",
+                                style: AppTextStyle().subtitle3,
+                              ),
+                              Text("${formatDate(detial.shipDate)}"),
+                            ],
+                          ),
                         ),
                       ],
                     ),
-                    SizedBox(
-                      height: Get.height * 0.02,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Date Of Birth",
-                              style: AppTextStyle().subtitle3,
-                            ),
-                            Text("24-Feb-1991"),
-                          ],
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: Get.height * 0.02,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "License Number",
-                              style: AppTextStyle().subtitle3,
-                            ),
-                            Text("U5146-317118-09374"),
-                          ],
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: Get.height * 0.02,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Permanent Address",
-                              style: AppTextStyle().subtitle3,
-                            ),
-                            Text("Kohinoor Chowk, Jaranwala Road"),
-                          ],
-                        ),
-                      ],
-                    ),
+                    // SizedBox(
+                    //   height: Get.height * 0.02,
+                    // ),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.start,
+                    //   children: [
+                    //     Column(
+                    //       crossAxisAlignment: CrossAxisAlignment.start,
+                    //       children: [
+                    //         Text(
+                    //           "License Number",
+                    //           style: AppTextStyle().subtitle3,
+                    //         ),
+                    //         Text("U5146-317118-09374"),
+                    //       ],
+                    //     ),
+                    //   ],
+                    // ),
+                    // SizedBox(
+                    //   height: Get.height * 0.02,
+                    // ),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.start,
+                    //   children: [
+                    //     Column(
+                    //       crossAxisAlignment: CrossAxisAlignment.start,
+                    //       children: [
+                    //         Text(
+                    //           "Permanent Address",
+                    //           style: AppTextStyle().subtitle3,
+                    //         ),
+                    //         Text("Kohinoor Chowk, Jaranwala Road"),
+                    //       ],
+                    //     ),
+                    //   ],
+                    // ),
                     SizedBox(
                       height: Get.height * 0.02,
                     ),
