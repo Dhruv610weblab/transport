@@ -33,10 +33,13 @@ class HomeScreen extends StatelessWidget {
                           : routeController.routesList.length,
                       itemBuilder: (context, index) {
                         if (routeController.routesList.isEmpty) {
-                          return Center(
-                            child: Text(
-                              "Trip not found",
-                              style: AppTextStyle().subtitle6,
+                          return SizedBox(
+                            height: Get.height / 2,
+                            child: Center(
+                              child: Text(
+                                "Trip not found",
+                                style: AppTextStyle().subtitle6,
+                              ),
                             ),
                           );
                         }
@@ -59,8 +62,10 @@ class HomeScreen extends StatelessWidget {
                                         style: AppTextStyle().subtitle3,
                                       ),
                                       IconButton(
-                                          onPressed: () =>
-                                              Get.to(() => DetailScreen(detial: routeController.routesList[index])),
+                                          onPressed: () => Get.to(() =>
+                                              DetailScreen(
+                                                  detial: routeController
+                                                      .routesList[index])),
                                           icon: Icon(
                                             Icons.info_outline,
                                             color: AppColors.primary1,

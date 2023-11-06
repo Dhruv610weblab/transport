@@ -24,4 +24,7 @@ class ApiUrl {
   ///Verify shipping
   static String checkUrl = "${baseUrl}route-status/check";
   static String verifyUrl = "${baseUrl}route-status/verify";
+
+  ///Firebase
+  static String fcmTokenUrl = "${baseUrl}fcm-token";
 }

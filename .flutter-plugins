@@ -2,6 +2,11 @@
 file_selector_linux=/Users/610weblab/.pub-cache/hosted/pub.dev/file_selector_linux-0.9.2+1/
 file_selector_macos=/Users/610weblab/.pub-cache/hosted/pub.dev/file_selector_macos-0.9.3+2/
 file_selector_windows=/Users/610weblab/.pub-cache/hosted/pub.dev/file_selector_windows-0.9.3+1/
+firebase_core=/Users/610weblab/.pub-cache/hosted/pub.dev/firebase_core-2.21.0/
+firebase_core_web=/Users/610weblab/.pub-cache/hosted/pub.dev/firebase_core_web-2.8.1/
+firebase_messaging=/Users/610weblab/.pub-cache/hosted/pub.dev/firebase_messaging-14.7.3/
+firebase_messaging_web=/Users/610weblab/.pub-cache/hosted/pub.dev/firebase_messaging_web-3.5.12/
+flutter_local_notifications=/Users/610weblab/.pub-cache/hosted/pub.dev/flutter_local_notifications-16.1.0/
 flutter_plugin_android_lifecycle=/Users/610weblab/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.16/
 image_picker=/Users/610weblab/.pub-cache/hosted/pub.dev/image_picker-1.0.4/
 image_picker_android=/Users/610weblab/.pub-cache/hosted/pub.dev/image_picker_android-0.8.7+5/

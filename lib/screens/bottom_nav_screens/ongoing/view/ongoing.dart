@@ -32,10 +32,13 @@ class OnGoingScreen extends StatelessWidget {
                           : viewController.viewList.length,
                       itemBuilder: (context, index) {
                         if (viewController.viewList.isEmpty) {
-                          return Center(
-                            child: Text(
-                              "Currently no trip found",
-                              style: AppTextStyle().subtitle6,
+                          return SizedBox(
+                            height: Get.height / 2,
+                            child: Center(
+                              child: Text(
+                                "Currently no trip found",
+                                style: AppTextStyle().subtitle6,
+                              ),
                             ),
                           );
                         }

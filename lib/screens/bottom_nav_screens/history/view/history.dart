@@ -23,7 +23,7 @@ class HistoryScreen extends StatelessWidget {
               init: HistoryController(),
               builder: (historyController) {
                 if (historyController.isHistory.value) {
-                  return Center(child: CircularProgressIndicator());
+                  return const Center(child: CircularProgressIndicator());
                 }
                 return RefreshIndicator(
                   onRefresh: () => historyController.history(),
@@ -34,10 +34,13 @@ class HistoryScreen extends StatelessWidget {
                           : historyController.historyList.length,
                       itemBuilder: (context, index) {
                         if (historyController.historyList.isEmpty) {
-                          return Center(
-                            child: Text(
-                              "History not found",
-                              style: AppTextStyle().subtitle6,
+                          return SizedBox(
+                            height: Get.height / 2,
+                            child: Center(
+                              child: Text(
+                                "History not found",
+                                style: AppTextStyle().subtitle6,
+                              ),
                             ),
                           );
                         }

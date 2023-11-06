@@ -34,6 +34,7 @@ class _HomeState extends State<Home> {
   void initState() {
     RouteController routeController = Get.put(RouteController());
     routeController.routes();
+
     if (mounted) {
       navBarsItems = [
         BottomNavigationBarItem(

@@ -1,14 +1,10 @@
 import 'dart:convert';
-
 import 'package:get/get.dart';
-import 'package:transport/constants/store_local.dart';
 import 'package:transport/screens/auth_screens/controller/login_controller.dart';
 import 'package:transport/screens/auth_screens/controller/state_change.dart';
-
 import '../../../api/api_service.dart';
 import '../../../api/api_url.dart';
 import '../../../constants/colors.dart';
-import '../auth_service/service_login.dart';
 import '../model/login_model.dart';
 import '../view/login.dart';
 

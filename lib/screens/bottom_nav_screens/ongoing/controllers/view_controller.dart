@@ -83,7 +83,7 @@ class ViewController extends GetxController {
       LoginModel apiResponse = LoginModel.fromJson(response);
       if (apiResponse.status == true) {
         Get.back();
-        routeController.routes();
+        await viewRoutes();
         // viewRoutes().then((value) async {
         //   await routeController.status(status: 2, id: routeId.value);
         //

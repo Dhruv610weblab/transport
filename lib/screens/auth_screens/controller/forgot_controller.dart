@@ -8,7 +8,6 @@ import 'package:transport/screens/auth_screens/model/login_model.dart';
 import '../../../api/api_service.dart';
 import '../../../constants/colors.dart';
 import '../../../constants/store_local.dart';
-import '../auth_service/service_login.dart';
 
 class ForgotController extends GetxController {
   RxBool isForgot = false.obs;

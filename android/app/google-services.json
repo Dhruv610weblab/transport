@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "928786190060",
+    "project_id": "shivatransport-f4986",
+    "storage_bucket": "shivatransport-f4986.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:928786190060:android:aa8c4e624526ed25665fc9",
+        "android_client_info": {
+          "package_name": "com.example.transport"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDm4oQhXeeQDhjFvKeOuDt2GgHI-7t-SEQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

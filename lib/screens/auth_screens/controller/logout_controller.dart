@@ -5,7 +5,6 @@ import '../../../api/api_service.dart';
 import '../../../api/api_url.dart';
 import '../../../constants/colors.dart';
 import '../../../constants/store_local.dart';
-import '../auth_service/service_login.dart';
 import '../model/login_model.dart';
 
 class LogoutController extends GetxController {

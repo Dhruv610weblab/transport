@@ -7,8 +7,8 @@ import 'package:transport/screens/auth_screens/model/login_model.dart';
 import '../../../api/api_service.dart';
 import '../../../constants/colors.dart';
 import '../../../constants/store_local.dart';
+import '../../../firebase/firebase.dart';
 import '../../get_start.dart';
-import '../auth_service/service_login.dart';
 
 class LoginController extends GetxController {
   RxBool isLoading = false.obs;
@@ -33,6 +33,8 @@ class LoginController extends GetxController {
     passwordError.value = newPassword;
   }
 
+  FirebaseController firebaseController = Get.put(FirebaseController());
+
   Future<void> loginUser(GlobalKey<FormState> formKeyLogin) async {
     try {
       isLoading.value = true;
@@ -41,14 +43,15 @@ class LoginController extends GetxController {
       if (formKeyLogin.currentState!.validate()) {
         var body =
             jsonEncode({"username": email.value, "password": password.value});
-        var response =
-            await ApiService().postAuthService(url: ApiUrl.loginUrl, body: body);
+        var response = await ApiService()
+            .postAuthService(url: ApiUrl.loginUrl, body: body);
         LoginModel apiResponse = LoginModel.fromJson(response);
         if (apiResponse.error != null) {
           responseError(apiResponse.error!);
         } else if (apiResponse.data != null) {
-          AppStorage().saveToken(apiResponse.data!.token.toString());
-          AppStorage().saveUserName(email.value);
+          await AppStorage().saveToken(apiResponse.data!.token.toString());
+          await AppStorage().saveUserName(email.value);
+          await firebaseController.postToken();
           Get.offAll(() => const GetStartedScreen());
         }
       }
